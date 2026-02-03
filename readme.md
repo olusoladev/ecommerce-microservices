@@ -32,7 +32,6 @@ It demonstrates communication between multiple services using **TCP** and **Rabb
 
 ## 🔄 Communication Flow
 
-```mermaid
 flowchart LR
   A[Customer] -->|HTTP POST /orders| B[Order Service]
   B -->|TCP get_customer| C[Customer Service]
@@ -41,8 +40,6 @@ flowchart LR
   E -->|Publish payment_completed event| F[RabbitMQ Queue]
   F -->|Worker saves transaction| G[Payment Service DB]
   B -->|HTTP Response| A
-
-```mermaid
 
 ## STEPS
 1: Customer places an order via HTTP request to Order Service (POST /orders)
