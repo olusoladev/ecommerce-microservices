@@ -24,8 +24,8 @@ services:
     depends_on:
       - mongodb
     ports:
-      - "3000:3000"
-      - "4000:4000"
+      - "3001:3001"
+      - "4001:4001"
 
   product-service:
     build: ./product-service
@@ -35,8 +35,8 @@ services:
     depends_on:
       - mongodb
     ports:
-      - "3001:3001"
-      - "4001:4001"
+      - "3002:3002"
+      - "4002:4002"
 
   order-service:
     build: ./order-service
@@ -49,8 +49,8 @@ services:
       - product-service
       - payment-service
     ports:
-      - "3002:3002"
-      - "4002:4002"
+      - "3003:3003"
+      - "4003:4003"
 
   payment-service:
     build: ./payment-service
@@ -61,8 +61,8 @@ services:
       - mongodb
       - rabbitmq
     ports:
-      - "3003:3003"
-      - "4003:4003"
+      - "3004:3004"
+      - "4004:4004"
 
 volumes:
   mongo-data:
