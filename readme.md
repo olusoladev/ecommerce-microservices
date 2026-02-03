@@ -60,21 +60,21 @@ Communication: TCP for service-to-service, HTTP for client, RabbitMQ for async e
 Containerization: Docker + Docker Compose
 
 Environment Variables
-Customer Service .env
+Customer Service .env  
 PORT=3001  
 TCPPORT=4001  
 TCPHOST=127.0.0.1  
 ENV=development  
 MONGO_URI=mongodb+srv://sonawap:rvhvcBoOXzp4e7H0@cluster0.nbiuu23.mongodb.net/?appName=Cluster0  
 
-Product Service .env
+Product Service .env  
 PORT=3002  
 TCPPORT=4002  
 TCPHOST=127.0.0.1  
 ENV=development  
 MONGO_URI=mongodb+srv://sonawap:rvhvcBoOXzp4e7H0@cluster0.nbiuu23.mongodb.net/?appName=Cluster0  
 
-Order Service .env
+Order Service .env  
 PORT=3003  
 TCPPORT=4003  
 TCPHOST=127.0.0.1  
@@ -87,7 +87,7 @@ PRODUCT_SERVICE_PORT=4002
 PAYMENT_SERVICE_HOST=127.0.0.1  
 PAYMENT_SERVICE_PORT=4004  
 
-Payment Service .env
+Payment Service .env  
 PORT=3004  
 TCPPORT=4004  
 TCPHOST=127.0.0.1  
