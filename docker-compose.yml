@@ -1,0 +1,68 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  customer-service:
+    build: ./customer-service
+    container_name: customer-service
+    env_file:
+      - ./customer-service/.env
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+
+  product-service:
+    build: ./product-service
+    container_name: product-service
+    env_file:
+      - ./product-service/.env
+    depends_on:
+      - mongodb
+    ports:
+      - "3001:3001"
+      - "4001:4001"
+
+  order-service:
+    build: ./order-service
+    container_name: order-service
+    env_file:
+      - ./order-service/.env
+    depends_on:
+      - mongodb
+      - customer-service
+      - product-service
+      - payment-service
+    ports:
+      - "3002:3002"
+      - "4002:4002"
+
+  payment-service:
+    build: ./payment-service
+    container_name: payment-service
+    env_file:
+      - ./payment-service/.env
+    depends_on:
+      - mongodb
+      - rabbitmq
+    ports:
+      - "3003:3003"
+      - "4003:4003"
+
+volumes:
+  mongo-data:
